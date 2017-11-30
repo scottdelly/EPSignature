@@ -23,5 +23,5 @@ DESC
   s.requires_arc = true
 
   s.source_files = 'Sources/**/*'
-  s.resources        = ["Sources/EPSignatureViewController.xib"]
+  s.resources        = ["Sources/SignatureVC.xib"]
 end
