@@ -1,6 +1,6 @@
 //
-//  EPDrawingView.swift
-//  Pods
+//  SignatureView.swift
+//  Signature
 //
 //  Created by Prabaharan Elangovan on 13/01/16.
 //
@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class EPSignatureView: UIView {
+open class SignatureView: UIView {
 
     // MARK: - Private Vars
     
@@ -52,12 +52,12 @@ open class EPSignatureView: UIView {
     
     func addLongPressGesture() {
         //Long press gesture is used to keep clear dots in the canvas
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(EPSignatureView.longPressed(_:)))
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(_:)))
         longPressGesture.minimumPressDuration = 1.5
         self.addGestureRecognizer(longPressGesture)
     }
     
-    func longPressed(_ gesture: UILongPressGestureRecognizer) {
+    @objc func longPressed(_ gesture: UILongPressGestureRecognizer) {
         let touchPoint = gesture.location(in: self)
         let endAngle: CGFloat = .pi * 2.0
         bezierPath.move(to: touchPoint)
@@ -113,6 +113,10 @@ open class EPSignatureView: UIView {
         setNeedsDisplay()
     }
     
+    open func validateSignatureBounds() -> Bool {
+        return bezierPath.bounds.size.width >= self.bounds.width * 0.1 || bezierPath.bounds.size.height >= self.bounds.height * 0.1
+    }
+    
     /** scales and repositions the path
      */
     open func reposition() {
@@ -121,11 +125,16 @@ open class EPSignatureView: UIView {
         bezierPath.apply(CGAffineTransform(scaleX: ratio, y: ratio))
         setNeedsDisplay()
     }
-    
+
+    /** Returns the drawn path as UIBezierPath. */
+    open func getSignatureAsPath() -> UIBezierPath {
+        return bezierPath
+    }
+
     /** Returns the drawn path as Image. Adding subview to this view will also get returned in this image.
      */
     open func getSignatureAsImage() -> UIImage? {
-        if isSigned {
+        if isSigned && self.validateSignatureBounds() {
             UIGraphicsBeginImageContext(CGSize(width: self.bounds.size.width, height: self.bounds.size.height))
             self.layer.render(in: UIGraphicsGetCurrentContext()!)
             let signature: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
