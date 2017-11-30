@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SDSignature",
+        "repositoryURL": "https://github.com/scottdelly/SDSignature.git",
+        "state": {
+          "branch": null,
+          "revision": "925ecb515a27baad42d2d02964e562eb84865139",
+          "version": "2.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,6 @@
+framework module SDSignature {
+  umbrella header "SDSignature-umbrella.h"
+
+  export *
+  module * { export * }
+}

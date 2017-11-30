@@ -1,0 +1,16 @@
+PODS:
+  - SDSignature (2.0.0)
+
+DEPENDENCIES:
+  - SDSignature (from `../`)
+
+EXTERNAL SOURCES:
+  SDSignature:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SDSignature: 8a01c9c253bd758be4498b67616ce8440e047a85
+
+PODFILE CHECKSUM: e6fe4b0ead323c1b71195cf6d6cce04b8c2d8048
+
+COCOAPODS: 1.3.1

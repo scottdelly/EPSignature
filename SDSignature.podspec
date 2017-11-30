@@ -22,6 +22,6 @@ DESC
   s.platform     = :ios, '10.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resources        = ["Pod/Classes/EPSignatureViewController.xib"]
+  s.source_files = 'Sources/**/*'
+  s.resources        = ["Sources/EPSignatureViewController.xib"]
 end
